@@ -1,4 +1,4 @@
-package com.keithcollier.petdemo;
+package petdemo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
