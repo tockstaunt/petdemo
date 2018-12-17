@@ -1,4 +1,4 @@
-package petdemo;
+/*package com.keithcollier.petdemo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,4 +13,4 @@ public class PetdemoApplicationTests {
     public void contextLoads() {
     }
 
-}
+}*/
