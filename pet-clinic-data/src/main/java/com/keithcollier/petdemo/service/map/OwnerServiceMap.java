@@ -1,11 +1,11 @@
 package com.keithcollier.petdemo.service.map;
 
 import com.keithcollier.petdemo.model.Owner;
-import com.keithcollier.petdemo.service.CrudService;
+import com.keithcollier.petdemo.service.OwnerService;
 
 import java.util.Set;
 
-public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements CrudService<Owner, Long> {
+public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
     @Override
     public Set<Owner> findAll() {
@@ -31,5 +31,10 @@ this.delete(object);
     public void deleteById(Long id) {
         this.deleteById(id);
 
+    }
+
+    @Override
+    public Owner findByFirstName(String firstName) {
+        return null;
     }
 }
