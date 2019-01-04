@@ -1,8 +1,10 @@
 package com.keithcollier.petdemo.bootstrap;
 
 import com.keithcollier.petdemo.model.Owner;
+import com.keithcollier.petdemo.model.PetType;
 import com.keithcollier.petdemo.model.Vet;
 import com.keithcollier.petdemo.service.OwnerService;
+import com.keithcollier.petdemo.service.PetTypeService;
 import com.keithcollier.petdemo.service.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -12,15 +14,25 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
 
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
     @Override
     public void run(String... args) throws Exception {
+
+        PetType dog = new PetType();
+        dog.setName("Dog");
+        PetType savedDogPetType = petTypeService.save(dog);
+
+        PetType cat = new PetType();
+        cat.setName("Cat");
+        PetType savedcCatPetType = petTypeService.save(cat);
 
     Owner owner1 = new Owner();
     owner1.setFirstName("Woentem");
