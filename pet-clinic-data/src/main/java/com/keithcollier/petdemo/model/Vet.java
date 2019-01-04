@@ -1,10 +1,11 @@
 package com.keithcollier.petdemo.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Vet extends Person {
 
-    private Set<Specialties> specialties;
+    private Set<Specialties> specialties = new HashSet<>();
 
     public Set<Specialties> getSpecialties() {
         return specialties;
