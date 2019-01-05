@@ -1,6 +1,6 @@
 package com.keithcollier.petdemo.model;
 
-public class Specialties extends BaseEntity {
+public class Specialty extends BaseEntity {
 
     private String descption;
 

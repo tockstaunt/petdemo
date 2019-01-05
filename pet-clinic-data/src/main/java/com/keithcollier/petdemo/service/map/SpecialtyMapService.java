@@ -1,31 +1,31 @@
 package com.keithcollier.petdemo.service.map;
 
-import com.keithcollier.petdemo.model.Specialties;
+import com.keithcollier.petdemo.model.Specialty;
 import com.keithcollier.petdemo.service.SpecialtyService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class SpecialtyMapService extends AbstractMapService<Specialties, Long> implements SpecialtyService {
+public class SpecialtyMapService extends AbstractMapService<Specialty, Long> implements SpecialtyService {
 
     @Override
-    public Set<Specialties> findAll() {
+    public Set<Specialty> findAll() {
         return super.findAll();
     }
 
     @Override
-    public Specialties findByID(Long id) {
+    public Specialty findByID(Long id) {
         return super.findById(id);
     }
 
     @Override
-    public Specialties save(Specialties object) {
+    public Specialty save(Specialty object) {
         return super.save( object);
     }
 
     @Override
-    public void delete(Specialties object) {
+    public void delete(Specialty object) {
         super.delete(object);
     }
 
