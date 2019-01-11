@@ -3,6 +3,7 @@ package com.keithcollier.petdemo.controller;
 import com.keithcollier.petdemo.service.VetService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -21,4 +22,12 @@ public class VetController {
         return "vet/index";
     }
 
+    @GetMapping({"/oups"})
+    public String oopsHandler(){
+
+        return "notimplemented";
+    }
+
 }
+
+
