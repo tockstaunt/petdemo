@@ -7,14 +7,13 @@ import com.keithcollier.petdemo.repositories.PetRepository;
 import com.keithcollier.petdemo.repositories.PetTypeRepository;
 import com.keithcollier.petdemo.service.OwnerService;
 import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
-@Component
-@Profile(("springdatajpa"))
+@Service
+@Profile("springdatajpa")
 public class OwnerSDJpaService  implements OwnerService {
 
     private final OwnerRepository ownerRepository;
@@ -32,6 +31,7 @@ public class OwnerSDJpaService  implements OwnerService {
     public Owner findByFirstName(String firstName) {
         return ownerRepository.findByFirstName(firstName);
     }
+
 
 
     public Owner findByLastName(String lastName) {
@@ -55,6 +55,7 @@ public class OwnerSDJpaService  implements OwnerService {
 
     @Override
     public Owner save(Owner object) {
+        System.out.println("----------------------------");
         return ownerRepository.save(object);
     }
 

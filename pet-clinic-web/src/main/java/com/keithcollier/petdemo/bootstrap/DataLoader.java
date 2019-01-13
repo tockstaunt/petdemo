@@ -1,10 +1,7 @@
 package com.keithcollier.petdemo.bootstrap;
 
 import com.keithcollier.petdemo.model.*;
-import com.keithcollier.petdemo.service.OwnerService;
-import com.keithcollier.petdemo.service.PetTypeService;
-import com.keithcollier.petdemo.service.SpecialtyService;
-import com.keithcollier.petdemo.service.VetService;
+import com.keithcollier.petdemo.service.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -15,17 +12,19 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
-    private final PetTypeService petTypeService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
+    private final PetTypeService petTypeService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService,
-                      PetTypeService petTypeService, SpecialtyService specialtyService) {
 
+    public DataLoader(OwnerService ownerService, VetService vetService, SpecialtyService specialtyService, VisitService visitService, PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
-        this.petTypeService = petTypeService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
+        this.petTypeService = petTypeService;
     }
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -35,7 +34,6 @@ public class DataLoader implements CommandLineRunner {
         if (count == 0){
             loadData();
         }
-
     }
 
     private void loadData() {
@@ -67,11 +65,18 @@ public class DataLoader implements CommandLineRunner {
         owner1.setTelephone("000-000-0000");
 
         Pet mikesPet = new Pet();
-        mikesPet.setPetType(cat);
         mikesPet.setOwner(owner1);
         mikesPet.setBirthDate(LocalDate.now());
         mikesPet.setName("Rosco");
+        mikesPet.setPetType(cat);
         owner1.getPets().add(mikesPet);
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(mikesPet);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDesc("data holder");
+
+        visitService.save(catVisit);
 
         ownerService.save(owner1);
 

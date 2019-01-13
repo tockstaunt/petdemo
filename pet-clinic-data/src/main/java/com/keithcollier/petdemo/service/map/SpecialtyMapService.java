@@ -2,11 +2,13 @@ package com.keithcollier.petdemo.service.map;
 
 import com.keithcollier.petdemo.model.Specialty;
 import com.keithcollier.petdemo.service.SpecialtyService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class SpecialtyMapService extends AbstractMapService<Specialty, Long> implements SpecialtyService {
 
     @Override

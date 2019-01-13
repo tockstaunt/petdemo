@@ -16,7 +16,7 @@ public class Visit extends BaseEntity{
     @Column(name = "desc")
     private String desc;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pet_id")
     private Pet pet;
 

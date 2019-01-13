@@ -5,11 +5,13 @@ import com.keithcollier.petdemo.model.Pet;
 import com.keithcollier.petdemo.service.OwnerService;
 import com.keithcollier.petdemo.service.PetService;
 import com.keithcollier.petdemo.service.PetTypeService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
     private final PetTypeService petTypeService;
@@ -19,6 +21,7 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
         this.petTypeService = petTypeService;
         this.petService = petService;
     }
+
 
     @Override
     public Set<Owner> findAll() {
@@ -69,7 +72,7 @@ this.delete(object);
 
     @Override
     public void deleteById(Long id) {
-        this.deleteById(id);
+        super.deleteById(id);
 
     }
 

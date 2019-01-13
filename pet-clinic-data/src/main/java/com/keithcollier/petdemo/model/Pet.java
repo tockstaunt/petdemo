@@ -16,14 +16,14 @@ public class Pet extends BaseEntity{
     @JoinColumn(name = "type_id")
     private PetType petType;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
     @Column(name = "birth_day")
     private LocalDate birthDate;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
+    @OneToMany
     private Set<Visit> visitSet = new HashSet<>();
 
     public String getName() {
