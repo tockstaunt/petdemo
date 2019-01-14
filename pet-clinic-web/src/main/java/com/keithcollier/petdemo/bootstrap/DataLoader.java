@@ -2,11 +2,13 @@ package com.keithcollier.petdemo.bootstrap;
 
 import com.keithcollier.petdemo.model.*;
 import com.keithcollier.petdemo.service.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
+@Slf4j
 @Component
 public class DataLoader implements CommandLineRunner {
 
@@ -28,7 +30,7 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
+    log.info("loading data...");
         int count = petTypeService.findAll().size();
 
         if (count == 0){
@@ -37,6 +39,7 @@ public class DataLoader implements CommandLineRunner {
     }
 
     private void loadData() {
+
         PetType dog = new PetType();
         dog.setName("Dog");
         PetType savedDogPetType = petTypeService.save(dog);
